@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-
+#include "TADPILHACASO1.h"
 #include "TADPilha.h"
 /* ANOTAÇÃO
 	PARA REALIZAR CONTAS EM UMA PILHA DE STRING PRECISO PEGAR O CHARACTER FAZER -48 FORMULA: INT = EXPRESSÃO[N] - 48  , SE DER UM OPERADOR VOCÊ PEGA OS 2 ULTIMOS NUMEROS E FAZ A CONTA
@@ -90,6 +90,7 @@ void ExcluirElemento(TpPilha &P)  //exercicio 2
 int main(void)
 {
 	//LIFO... "Last in, First out"
+	TpPilhaM1 Pilha3;
 	TpPilha Pilha, Pilha2;
 	char op;
 	do
