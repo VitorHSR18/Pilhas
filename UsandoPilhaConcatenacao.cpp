@@ -32,6 +32,19 @@ char LeElemento(void)
 	return getche();
 }
 
+void InserirPilhaConcorrente(TpPilhaM1 &P,int NP)
+{
+	char Elemento;
+	Inicializar(P);
+	printf("\nDigite os Elementos:\n");
+	Elemento = getche();
+	while(Elemento!=27 && !PMCheia(P.TOPO1,P.TOPO2))
+	{
+		Push(P,NP,Elemento);
+		Elemento = getche();
+	}
+}
+
 void InserirElementos(TpPilha &P)
 {
 	char Elemento;
@@ -61,7 +74,7 @@ void Concatenacao(TpPilha &P,TpPilha P2)
 void ExcluirElemento(TpPilha &P)  //exercicio 2
 {
 	TpPilha PE;
-	char exc[10];
+	char exc;
 	Inicializar(PE);
 	//Inicializar(Pexc);
 	
@@ -69,7 +82,7 @@ void ExcluirElemento(TpPilha &P)  //exercicio 2
 	exc=getche();
 	while(!Vazia(P.TOPO))
 	{
-		if(P.TOPO!=exc)
+		if(ElementoTopo(P)!=exc)
 			Push(PE,Pop(P));
 		else
 			Pop(P);	
@@ -84,6 +97,46 @@ void ExcluirElemento(TpPilha &P)  //exercicio 2
 	//Exibir(P);
 }
 
+void ExcluirPilhaConcorrente(TpPilhaM1 &P)
+{
+	int Num;
+	char elemento;
+	
+	
+	printf("\nQual elemento deseja excluir?\n");
+	elemento=getche();
+	printf("De qual pilha você deseja excluir?(1/2)\n");
+	scanf("%d",Num);
+	if(Num==1)
+	{
+		while(!PMVazia(P,1))
+		{
+			if(ElementoTopo(P)!=elemento)
+		       Push(P,Num+1,POP(P,Num));
+	        else
+	        	Pop(P,Num);
+		}
+		while{
+			Push(P,Num,Pop(P,Num+1));
+		}
+	}
+	else
+	{
+		while(!PMVazia(P,2))
+		{
+			if(ElementoTopo(P)!=elemento)
+		       Push(P,Num-1,POP(P,Num));
+	        else
+	        	Pop(P,Num);
+		}
+		while{
+			Push(P,Num,Pop(P,Num-1));
+		}
+	}
+	Exibir(P,1);
+	Exibir (P,2);
+	getch();
+}
 
 
 
@@ -93,6 +146,7 @@ int main(void)
 	TpPilhaM1 Pilha3;
 	TpPilha Pilha, Pilha2;
 	char op;
+	Inicializar(Pilha3);
 	do
 	{
 		op=Menu();
