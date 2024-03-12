@@ -21,6 +21,7 @@ char Menu(void)
 	printf("[D] Elemento do Topo\n");
 	printf("[E] Exibir\n");
 	printf("[F] Exerc . 01 - Concatenação de Pilha\n");
+	printf("[G]-EXERCICIO 2: exclusao \n");
 	printf("[ESC] SAIR\n");
 	return toupper(getche());
 }
@@ -57,10 +58,39 @@ void Concatenacao(TpPilha &P,TpPilha P2)
 }
 	
 
-int main (void)
+void ExcluirElemento(TpPilha &P)  //exercicio 2
 {
-	// LIFO ... " Last in , First Out " 
-	TpPilha Pilha,Pilha2;
+	TpPilha PE;
+	char exc[10];
+	Inicializar(PE);
+	//Inicializar(Pexc);
+	
+	printf("\nQual elemento deseja excluir: ");
+	exc=getche();
+	while(!Vazia(P.TOPO))
+	{
+		if(P.TOPO!=exc)
+			Push(PE,Pop(P));
+		else
+			Pop(P);	
+	}
+	while(!Vazia(PE.TOPO))
+	{
+		Push(P,Pop(PE));
+		//printf("%s", P.TOPO);
+	}
+	printf("\nElemento excluido!");
+	//printf("\nResultado da exclusao: ");
+	//Exibir(P);
+}
+
+
+
+
+int main(void)
+{
+	//LIFO... "Last in, First out"
+	TpPilha Pilha, Pilha2;
 	char op;
 	do
 	{
@@ -73,46 +103,58 @@ int main (void)
 						
 			case 'B':	if(!Cheia(Pilha.TOPO))
 						{
-								Push(Pilha,LeElemento());
-								printf("\nElemento Empilhado!\n");
+							Push(Pilha, leElemento());
+							printf("\nElemento empilhado!\n");
 						}
-						else 
-							printf("\nPilha Cheia!\n");
-						
+						else
+							printf("\nPilha vazia!");
 						break;
 						
 			case 'C':	if(!Vazia(Pilha.TOPO))
-							printf("\nElemento Desempilhado: %c\n",Pop(Pilha));
+							printf("\nElemento desempilhado: %c\n", Pop(Pilha));
 						else
-							printf("\nPilha Vazia!\n");
+							printf("\nPilha vazia!");
 						break;
 						
 			case 'D':	if(!Vazia(Pilha.TOPO))
-							printf("\n Elemento do Topo: %c",ElementoTopo(Pilha));
+							printf("\nElemento do topo: %c\n", ElementoTopo(Pilha));
 						else
-							printf("\nPilha Vazia!\n");
+							printf("\nPilha vazia!");
 						break;
 						
-			case 'E':	printf("\nConteudo da Pilha:\n"); 
+			case 'E':	printf("\nConteudo da pilha: \n");
 						if(!Vazia(Pilha.TOPO))
 							Exibir(Pilha);
 						else
-							printf("\nPilha Vazia!\n");
-						break;
-			case 'F':   printf("\nConcatenacao da Pilha\n");
-						printf("\nPILHA 1:\n");
+							printf("\nPilha vazia!");
+						break;	
+						
+			case 'F':	printf("\nConcatenização da pilha 2 com 1\n"); //exercicio 1
+						printf("\nPilha 1: ");
 						InserirElementos(Pilha);
-						printf("\nPILHA 2\n");
-						InserirElemento(Pilha2);
-						Concatenacao(Pilha,Pilha2);
-						printf("\nResultado da Concatenacao")
-						Exibir(Pilha)
-						break
+						printf("\nPilha2: ");
+						InserirElementos(Pilha2);
+						Concatenacao(Pilha, Pilha2);
+						printf("\nResultado da concatenacao: ");
+						Exibir(Pilha);
+						break;		
 						
+			case 'G':	printf("\nExclusao de elemento");
+						InserirElementos(Pilha);
+						ExcluirElemento(Pilha);
+						printf("\nResultado da exclusao: ");
+						Exibir(Pilha);
+						break;		
 						
+							
 		}
 		getch();
+		
 	}while(op!=27);
 	
 	return 0;
+	
+//	TpReg Tab[10];
+//	Cad();
+//	Rel();
 }
