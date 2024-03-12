@@ -4,7 +4,7 @@ struct TpPilhaM1
 {
 	int TOPO1,TOPO2;
 	char PILHA[MaxPilha];
-}
+};
 
 void Inicializar(TpPilhaM1 &PM)
 {
@@ -20,7 +20,7 @@ void PUSH(TpPilhaM1 &PM,int NP,char Elemento) // NP Qual é a pilha que vou mexe
 		PM.PILHA[--PM.TOPO2]=Elemento;
 }
 
-void POP(TpPilhaM1 &PM,int NP,char Elemento)
+char POP(TpPilhaM1 &PM,int NP,char Elemento)
 {
 	if(NP==1)
 		return PM.PILHA[PM.TOPO1--];
@@ -28,12 +28,25 @@ void POP(TpPilhaM1 &PM,int NP,char Elemento)
 		return PM.PILHA[PM.TOPO2++];
 }
 
-void ElementoTopo(TpPilhaM1 PM,int NP)
+char ElementoTopo(TpPilhaM1 PM,int NP)
 {
 	if(NP==1)
 		return PM.PILHA[PM.TOPO1];
 	else
 		return PM.PILHA[PM.TOPO2];
+}
+
+
+int PMVazia(int TOPO,int NP)
+{
+	if(NP==1)
+		return TOPO==-1;
+	else
+		return TOPO==MaxPilha;
+		
+int PMCHEIA(int topo1,int topo2)
+{
+	return topo1+1==topo2;
 }
 
 void Exibir(TpPilhaM1 PM,int NP)
@@ -44,15 +57,4 @@ void Exibir(TpPilhaM1 PM,int NP)
 	else
 		while(!PMVazia(PM.TOPO2,2)
 			printf("%c\n",POP(PM,NP);
-}
-void PMVazia(int TOPO,int NP)
-{
-	if(NP==1)
-		return topo==-1;
-	else
-		return topo==MaxPilha;
-		
-void PMCHEIA(int topo1,int topo2)
-{
-	return topo1+1==topo2;
 }
