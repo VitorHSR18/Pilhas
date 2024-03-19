@@ -57,12 +57,15 @@ void formulario(void) // formulario
 	Moldura(2,6,70,12,9); 
 	gotoxy(9,13);
 	textcolor(7);
-	Moldura(3,7,9,11,12); 
+	//"Comprar cartas"
+	Moldura(3,7,9,11,12);
 	Moldura(11,7,17,11,7);
-	Moldura(33,7,39,11,12);
-	Moldura(41,7,47,11,7);
-	Moldura(49,7,55,11,12);
-	Moldura(57,7,63,11,7);
+	//" Colocar as cartas "
+	Moldura(33,7,39,11,12); /* ouro */ gotoxy(34,8); printf("%c",4); 
+	Moldura(41,7,47,11,7); /* espada */ gotoxy(42,8); printf("%c",6); 
+	Moldura(49,7,55,11,12); /* copa */ gotoxy (50,8); printf("%c",3);
+	Moldura(57,7,63,11,7); /* Zap */ gotoxy(58,8); printf("%c",5);
+	
 		gotoxy(30,25);
 		textcolor(6);	
 }
